@@ -156,7 +156,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "Asia/amman"
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -248,3 +248,27 @@ CKEDITOR_5_CONFIGS = {
 
 LOGIN_REDIRECT_URL = "accounts/login/"
 LOGIN_URL = 'accounts/login/'
+
+
+
+# settings.py
+import os
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'debug.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
